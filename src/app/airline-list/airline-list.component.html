@@ -1,0 +1,35 @@
+<div class="d-flex flex-row-reverse bd-highlight">
+  <button class="btn btn-primary m-2" (click)="activateOperation('AddAirline')"
+  ><i class="bi bi-plus-circle m-1"></i>Add Airline</button>
+</div>
+<div class="container m-2">
+    <h2 class="mb-3 text-center">Airlines Collection</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <!-- <th scope="col">#Id</th> -->
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Address</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let airline of lstAirline">
+          <!-- <td>{{ airline.id }}</td> -->
+          <td>{{ airline.name }}</td>
+          <td>{{ airline.contactNumber }}</td>
+          <td>{{ airline.address }}</td>
+          <td>
+            <span *ngIf="!airline.isBlocked" class="edit btn-danger btn-sm btn m-1"
+              (click)="BlockAirline(airline.id);">Block</span>            
+            <span *ngIf="!!airline.isBlocked" class="edit btn-warning btn-sm btn m-1"
+            (click)="UnblockAirline(airline.id);">Unblock</span>
+            <!-- <span
+              class="edit btn-success btn-sm btn m-1"
+              >Edit</span> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,22 @@
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">Template Driven Form</div>
+        <div class="card-body">
+            <form #formS1=ngForm (ngSubmit)="onSubmitForm(formS1.value)">
+                <input type="text" name="userName" placeholder="type user name here" ngModel/>
+                <input type="number" name="MobileNumber" placeholder="type Mobile Number here" ngModel/>
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header">Reactive Form</div>
+            <div class="card-body">
+                <app-reactive-form-demo></app-reactive-form-demo>
+            </div>
+          </div>
+    </div>    
+  </div>

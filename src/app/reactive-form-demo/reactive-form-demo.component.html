@@ -1,0 +1,37 @@
+<p>reactive-form-demo works!</p>
+<form [formGroup]="fd_UserInfo" 
+class="form-control-group"
+(ngSubmit)="onSubmitForm(fd_UserInfo.value)">
+    <input type="text" placeholder="type user name here" formControlName="name"
+        class="form-control m-2"
+        [ngClass]="{
+            'is-invalid':fc_UserInfo.name.invalid && (
+                fc_UserInfo.name.dirty || fc_UserInfo.name.touch
+            ),
+            'is-valid':!!fc_UserInfo.name.valid
+        }"
+    />
+    <div class="form-control-feedback m-2 invalid-feedback" 
+    *ngIf="fc_UserInfo.name.errors && (
+        fc_UserInfo.name.dirty || fc_UserInfo.name.touch
+    )">
+        Invalid Name
+    </div>
+
+    <input type="number" placeholder="type Mobile Number here" formControlName="mobileNumber"
+    class="form-control m-2"
+    [ngClass]="{
+        'is-invalid':fc_UserInfo.mobileNumber.invalid && (
+            fc_UserInfo.mobileNumber.dirty || fc_UserInfo.mobileNumber.touch
+        ),
+        'is-valid':!!fc_UserInfo.mobileNumber.valid
+    }"
+    />
+    <div class="form-control-feedback m-2 invalid-feedback" 
+    *ngIf="fc_UserInfo.mobileNumber.errors && (
+        fc_UserInfo.mobileNumber.dirty || fc_UserInfo.mobileNumber.touch
+    )">
+        Invalid Mobile Number
+    </div>
+    <input type="submit" class="btn-info m-2" value="Submit"/>
+</form>

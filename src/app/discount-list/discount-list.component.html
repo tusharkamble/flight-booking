@@ -1,0 +1,31 @@
+<div class="d-flex flex-row-reverse bd-highlight">
+    <button class="btn btn-primary m-2" (click)="activateOperation('AddDiscount')"><i
+            class="bi bi-plus-circle m-1"></i>Add Discount</button>
+</div>
+<div class="container m-2">
+    <h2 class="mb-3 text-center">Discounts Collection</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Coupon Code</th>
+                <th scope="col">Value</th>
+                <th scope="col">Discount Type</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let discount of lstDiscounts">
+                <td>{{ discount.id }}</td>
+                <td>{{ discount.couponCode }}</td>
+                <td>{{ discount.value }}</td>
+                <td>{{ discount.discountType }}</td>
+                <td>                    
+                    <!-- <span
+                class="edit btn-success btn-sm btn m-1"
+                >Edit</span> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

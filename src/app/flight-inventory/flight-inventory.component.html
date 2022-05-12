@@ -1,0 +1,50 @@
+<div class="d-flex flex-row-reverse bd-highlight m-2">
+    <button class="btn btn-primary" (click)="activateOperation('AddFlightInventory')">
+        <i class="bi bi-plus-circle m-1"></i>Add Schedule
+    </button>
+</div>
+<div class="container m-2">    
+    <h2 class="mb-3 text-center">Flight Inventory Collection</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Flight Number</th>
+                <th scope="col">Airline Id</th>
+                <th scope="col">From Place</th>
+                <th scope="col">To Place</th>
+                <th scope="col" style="min-width: 120px;">Start Date Time</th>
+                <th scope="col" style="min-width: 120px;">End Date Time</th>
+                <th scope="col">Schedule Days</th>
+                <th scope="col">Instrument Used</th>
+                <th scope="col">Business Seats Count</th>
+                <th scope="col">Non Business Seat Count</th>
+                <th scope="col">Ticket Cost</th>
+                <th scope="col">Rows</th>
+                <th scope="col">Meal Type</th>
+                <!-- <th scope="col">Action</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let flightInventory of lstFlightInventory">
+                <td>{{ flightInventory.flightInventoryId }}</td>
+                <td>{{ flightInventory.flightNumber }}</td>
+                <td>{{ flightInventory.airlineID }}</td>
+                <td>{{ flightInventory.fromPlace }}</td>
+                <td>{{ flightInventory.toPlace }}</td>
+                <td>{{ flightInventory.startDateTime | date:'MMM d, y, h:mm a' }}</td>
+                <td>{{ flightInventory.endDateTime | date:'MMM d, y, h:mm a'}}</td>
+                <td>{{ flightInventory.scheduleDays }}</td>
+                <td>{{ flightInventory.instrumentUsed }}</td>
+                <td>{{ flightInventory.bussinesSteatsCount }}</td>
+                <td>{{ flightInventory.nonBussinesSeatCount }}</td>
+                <td>{{ flightInventory.ticketCost }}</td>
+                <td>{{ flightInventory.noofRows }}</td>
+                <td>{{ flightInventory.mealType }}</td>
+                <!-- <td>
+                    <span class="edit btn-success btn-sm btn m-2">Edit</span>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

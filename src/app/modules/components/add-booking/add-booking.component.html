@@ -1,0 +1,171 @@
+<div class="container mt-2 mb-2">
+    <div class="card">
+        <div class="card-header" style="background-color: rgb(200, 200, 200);">
+            <div class="d-flex">
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="radio" name="journeyType" 
+                    (change)="changeJourneyType(journeyTypes.OneWay)"
+                    id="journeyTypeOneWay" [checked]="filterData.journeyType==journeyTypes.OneWay"/>
+                    <label class="form-check-label" for="journeyTypeOneWay">
+                        One Way
+                    </label>
+                </div>
+                <div class="form-check m-2">
+                    <input class="form-check-input" type="radio" name="journeyType" 
+                    (change)="changeJourneyType(journeyTypes.TwoWay)"
+                    id="journeyTypeRoundTrip" [checked]="filterData.journeyType==journeyTypes.TwoWay">
+                    <label class="form-check-label" for="journeyTypeRoundTrip">
+                        Round Trip
+                    </label>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap">
+                <div class="d-flex m-2">
+                    <label for="FromLocation" class="form-label align-self-center">From Location</label>
+                    <select #ddlFromLocation id="FromLocation" class="form-select" 
+                        (change)="changeFromLocation(ddlFromLocation.value)" aria-label="Default select location">
+                        <option selected disabled>Select Location</option>
+                        <option *ngFor="let Location of lstLocations" 
+                            [value]="Location">{{Location}}</option>
+                    </select>
+                </div>
+                <div class="d-flex m-2">
+                    <label for="ToLocation" class="form-label align-self-center">To Location</label>
+                    <select #ddlToLocation id="ToLocation" class="form-select" 
+                        (change)="changeToLocation(ddlToLocation.value)" aria-label="Default select location">
+                        <option selected disabled>Select Location</option>
+                        <option *ngFor="let Location of lstLocations" 
+                            [value]="Location">{{Location}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="" [ngClass]="filterData.journeyType==journeyTypes.OneWay?'col-sm-12':'col-sm-6'">
+                    <div class="card">
+                        <div class="card-header">                            
+                            <div class="row d-flex">
+                                <div class="col form-group p-2">
+                                    <label for="dtOnwardJourney" class="form-label align-self-center">Onward Journey</label>
+                                    <input id="dtOnwardJourney" [value]="filterData.startDate" 
+                                    type="datetime-local" class="form-control" 
+                                    placeholder="Onward Journey"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- filters should be passed as parameters -->
+                            <app-select-flight-list                            
+                            [fromLocation]="filterData.fromLocation"
+                            [toLocation]="filterData.toLocation"
+                            [startDate]="filterData.startDate"
+                            [endDate]="filterData.endDate"
+                            (flightSelected)="flightSelected($event,journeyTypes.OneWay);"
+                            ></app-select-flight-list>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex">
+                                <label for="FromLocationMealType" class="form-label align-self-center">Meal Type</label>
+                                <select id="FromLocationMealType" class="form-select form-control" aria-label="Default select example">
+                                    <option selected disabled value="">Select Meal Type</option>
+                                    <option *ngFor="let mealType of lstMealTypes" 
+                                    [value]="mealType">{{mealType}}</option>                       
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6" *ngIf="filterData.journeyType==journeyTypes.TwoWay">
+                    <div class="card mb-2">
+                        <div class="card-header">                            
+                            <div class="row d-flex">
+                                <div class="col form-group p-2">
+                                    <label for="dtReturnJourney" class="form-label align-self-center">Return Journey</label>
+                                    <input id="dtReturnJourney"
+                                    [value]="filterData.endDate" 
+                                    type="datetime-local" class="form-control" 
+                                    placeholder="Return Journey"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <!-- filters should be passed as parameters -->
+                            <app-select-flight-list
+                            [fromLocation]="filterData.toLocation"
+                            [toLocation]="filterData.fromLocation"
+                            [startDate]="filterData.startDate"
+                            [endDate]="filterData.endDate"
+                            (flightSelected)="flightSelected($event,journeyTypes.TwoWay);"
+                            ></app-select-flight-list>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex">
+                                <label for="ToLocationMealType" class="form-label align-self-center">Meal Type</label>
+                                <select id="ToLocationMealType" class="form-select form-control" aria-label="Default select example">
+                                    <option selected disabled value="">Select Meal Type</option>
+                                    <option *ngFor="let mealType of lstMealTypes" 
+                                    [value]="mealType">{{mealType}}</option> 
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="col-12 d-flex justify-content-between">
+                <div class="align-self-center">
+                    <span class="Total-Price-Label fw-bold">Total Price: </span>
+                    <span class="Total-Price-Value">{{totalTicketPrice | currency:'INR':'symbol'}} </span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-secondary"
+                    (click)="continueBookingAsPerSelection();" 
+                    data-bs-toggle="modal" data-bs-target="#flightBokkingModal"
+                    >Continue Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#flightBokkingModal">
+    Launch demo modal
+    </button> -->
+    <!-- Modal -->
+    <div class="modal fade" id="flightBokkingModal" tabindex="-1" 
+    aria-labelledby="flightBokkingModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="flightBokkingModalLabel">Book Ticket</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="discounts-list">Available Discounts : </label>
+                            <select #ddlDiscountList id="discounts-list" (click)="applyDiscount(ddlDiscountList.value)"
+                                class="form-select" aria-label="List of discounts">
+                                <option selected disabled value="">Select Discount Coupon</option>
+                                <option *ngFor="let d of lstDiscounts" [value]="d.id">{{d.couponCode +" ( " + (d.value +" "+ d.discountType + " OFF")+" ) "}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="Total-Price-Label fw-bold">Ticket Price after Discount: </span>
+                            <span class="Total-Price-Value">{{totalTicketPriceAfterDiscount | currency:'INR':'symbol'}} </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                    (click)="bookTicketsAsPerSelection();">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

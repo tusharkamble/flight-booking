@@ -1,0 +1,24 @@
+
+<div class="list-group">
+  <a *ngFor="let inventory of lstFlightInventory" 
+  (click)="selectFlight(inventory.flightInventoryId);"
+  [ngClass]="{'active':selectedFlightInventoryId===inventory.flightInventoryId}"
+  class="list-group-item list-group-item-action" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <!-- <h5 class="mb-1">{{inventory.airlineID}}Airline name</h5> -->
+      <h5 class="mb-1">{{inventory.flightNumber+" ("+inventory.flightInventoryId+")"}}</h5>
+      <small>logo {{inventory.airlineID}}</small>
+    </div>
+    <p class="mb-1">
+        <span class="flight-price-label">Price : </span>
+        <span class="flight-price-value">{{inventory.ticketCost | currency:'INR':'symbol'}}</span>
+    </p>
+    <p class="mb-1">
+      <span class="flight-departure">Departure : </span>
+      <span class="flight-departure">{{inventory.startDateTime}}</span>        
+    </p>
+  </a>
+  <div *ngIf="lstFlightInventory && lstFlightInventory.length===0" class="text-danger">
+    Flights are not available for applied filters.
+  </div>
+</div>

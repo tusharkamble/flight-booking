@@ -1,0 +1,22 @@
+'<div class="container" style="max-width: 500px;">
+    <h3 class="mb-3 mt-5 text-center">Add Discount</h3>
+    <div class="form-group m-2">
+      <input type="text" [(ngModel)]="objDiscount.couponCode" class="form-control" placeholder="Coupon Code">
+    </div>
+    <div class="form-group m-2">
+      <input type="number" [(ngModel)]="objDiscount.value" class="form-control" placeholder="Value">
+    </div>
+    <div class="form-group m-2">
+        <select [(ngModel)]="objDiscount.discountType"
+        class="form-control" placeholder="Discount Type">
+            <option *ngFor="let dt of lstDiscountType;let counter=index;" 
+            [value]="dt">{{dt}}</option>
+        </select>
+    </div>
+    <div class="form-group m-2">
+      <button class="btn btn-danger btn-lg btn-block m-2" (click)="goBackToMain()"><i class="bi bi-arrow-left-circle"></i>Back</button>
+      <button class="btn btn-success btn-lg btn-block" (click)="addDiscount()">
+        <i class="bi bi-plus-circle"></i>Add Discount
+      </button>
+    </div>
+  </div>'

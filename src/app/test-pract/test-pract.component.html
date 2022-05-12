@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <h5 class="card-header">Input/Output Parameters</h5>
+            <div class="card-body">
+                <app-resize [fontSize]="fontSize" (changeSize)="fontSize=$event"
+                    [callBackChangeFontSize]="callBackChangeFontSize"></app-resize>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <h5 class="card-header">ngSwitch and ngStyle</h5>
+            <div class="card-body">
+                <div [ngSwitch]="loginUserRole">
+                    <div class="row">
+                        <div class="d-flex flex-row bd-highlight">
+                            <button class="btn btn-primary m-2" (click)="setNewRole('Admin')">Set Admin Role</button>
+                            <button class="btn btn-primary m-2" (click)="setNewRole('User')">Set User Role</button>
+                            <button class="btn btn-primary m-2" (click)="setNewRole('')">Remove Role</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div *ngSwitchCase="'User'" [ngStyle]="{'color':'blue'}">
+                                In User case
+                            </div>
+                            <div *ngSwitchCase="'Admin'" [ngStyle]="{'color':'red'}">
+                                in Admin case
+                            </div>
+                            <div *ngSwitchDefault [ngStyle]="{'color':'orange'}">
+                                In default case
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <h5 class="card-header">Pipe Operations</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Scenario</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Today's Date</td>
+                                    <td>{{todayDate}}</td>
+                                </tr>
+                                <tr>
+                                    <td>shortDate</td>
+                                    <td>{{todayDate | date:'shortDate'}}</td>
+                                </tr>
+                                <tr>
+                                    <td>formatted Date(MM/dd/yyyy)</td>
+                                    <td>{{todayDate|date:'MM/dd/yyyy'}}</td>
+                                </tr>
+                                <tr>
+                                    <td>formatted Date(h:mm)</td>
+                                    <td>{{todayDate|date:'h:mm'}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable>{{1234.6788|currency:'CAD'}}</td>
+                                    <td>{{1234.6788|currency:'CAD'}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable>{{31.234|number:'3.4'}}</td>
+                                    <td>{{31.234|number:'3.4'}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable>{{31.234|number:'3.1-2'}}</td>
+                                    <td>{{31.234|number:'3.1-2'}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable>{{'Tushar'|uppercase}}</td>
+                                    <td>{{'Tushar'|uppercase}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable>{{'Tushar'|lowercase}}</td>
+                                    <td>{{'Tushar'|lowercase}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable>{{123.456|percent}}</td>
+                                    <td>{{123.456|percent}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable>{{123.456|percent:'4.1-2'}}</td>
+                                    <td>{{123.456|percent:'4.1-2'}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable>{{3.456|percent:'2.3-4'}}</td>
+                                    <td>{{3.456|percent:'2.3-4'}}</td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td ngNonBindable></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card text-center">
+            <div class="card-header">
+              Featured
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+    </div>
+</div>

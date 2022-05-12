@@ -1,0 +1,14 @@
+<p [style.font-size.px]="fontSize" class="m-2">Resizable Text</p>
+
+<div class="row">
+    <div class="d-flex flex-row bd-highlight">
+        <button class="btn btn-primary m-2" (click)="incrementSize()"
+        >Increment +1</button>
+        <button class="btn btn-primary m-2" (click)="decrementSize()"
+        >Decrement -1</button>
+        <button class="btn btn-primary m-2" (click)="changeFontSizeForCallBack(5)"
+        >Increment +5</button>
+        <button class="btn btn-primary m-2" (click)="changeFontSizeForCallBack(-5)"
+        >Decrement -5</button>
+      </div>
+</div>

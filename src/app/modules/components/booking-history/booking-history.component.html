@@ -1,0 +1,35 @@
+<div class="container m-2">    
+    <h2 class="mb-3 text-center">My Booking History</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Flight Number</th>
+                <th scope="col">Journey Type</th>
+                <th scope="col">PNR</th>
+                <th scope="col">Is Cancelled</th>
+                <th scope="col">Number of Seats</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Meal Preference</th>
+                <th scope="col">Selected Seats</th>
+                <!-- <th scope="col">Action</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bh of lstBookingHistory">
+                <td>{{ bh.id }}</td>
+                <td>{{ bh.flightIDs }}</td>
+                <td>{{ bh.journeyType }}</td>
+                <td>{{ bh.pnr }}</td>
+                <td>{{ bh.isCancelled?"Yes":"No" }}</td>
+                <td>{{ bh.numberOfSeats }}</td>
+                <td>{{ bh.name }}</td>
+                <td>{{ bh.mealPreference }}</td>
+                <td>{{ bh.selectedSeats }}</td>
+                <!-- <td>
+                    <span class="edit btn-success btn-sm btn m-2">View Passengers</span>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

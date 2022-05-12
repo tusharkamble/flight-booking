@@ -1,0 +1,6 @@
+.row .col-sm-6 .card:first-child{
+    margin: 1em 1em 1em 1em;
+}
+.row .col-sm-6 .card:last-child{    
+    margin: 1em 1em 1em 1em;
+}

@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-light" 
+style="background-color:#e1affb;">
+    <div class="container-fluid">
+        <a class="navbar-brand" >Airline App <i class="m-2 bi bi-telegram"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarModulesContent"
+            aria-controls="navbarModulesContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarModulesContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li *ngIf="ucRole==='USER'" class="nav-item">
+                    <a class="nav-link" aria-current="page" 
+                    routerLinkActive="active"
+                    routerLink="booking">Booking</a>
+                </li>
+                <li *ngIf="ucRole==='ADMIN'" class="nav-item">
+                    <a class="nav-link"
+                    routerLinkActive="active"
+                    routerLink="admin">Admin</a>
+                </li>
+            </ul>
+            
+        </div>
+        <ul class="list-unstyled topbar-menu float-end mb-0 d-flex">
+            <li class="dropdown notification-list topbar-dropdown d-none d-lg-block">
+                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" id="topbar-languagedrop" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="align-middle">English</span> <i class="mdi mdi-chevron-down align-middle"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu" aria-labelledby="topbar-languagedrop">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <span class="align-middle">German</span>
+                    </a>
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <span class="align-middle">Spanish</span>
+                    </a>
+                </div>
+            </li>
+            
+            <li class="notification-list">
+                <a class="nav-link end-bar-toggle" href="javascript: void(0);">
+                    <i class="bi bi-bell-fill"></i>
+                </a>
+            </li>
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                    <span class="account-user-avatar"> 
+                        <i class="bi bi-person-circle"></i>
+                    </span>
+                    <!-- <span>
+                        <span class="account-user-name">User name here</span>
+                        <span class="account-position">Role here</span>
+                    </span> -->
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated 
+                topbar-dropdown-menu profile-dropdown" 
+                aria-labelledby="topbar-userdrop" 
+                style="position: absolute; inset: 0px 0px auto auto; margin: 0px; 
+                transform: translate3d(0px, 47px, 0px);" 
+                data-popper-placement="bottom-end">
+                    <!-- item-->
+                    <div class=" dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome {{userInfo?.username}}!</h6>
+                    </div>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="mdi mdi-logout me-1"></i>
+                        <span (click)="logout();">Logout</span>
+                    </a>
+
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+

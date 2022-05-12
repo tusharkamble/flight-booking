@@ -1,0 +1,53 @@
+<div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" [ngClass]="ActiveTab=='Manage Airline'?'active':''" aria-current="page" 
+            (click)="setActiveTab('Manage Airline')">Manage Airline</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [ngClass]="ActiveTab=='Manage Schedule'?'active':''" 
+            (click)="setActiveTab('Manage Schedule')">Manage Schedule</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [ngClass]="ActiveTab=='Manage Discount'?'active':''"
+            (click)="setActiveTab('Manage Discount')">Manage Discount</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade" 
+        *ngIf="ActiveTab=='Manage Airline'"
+        [ngClass]="ActiveTab=='Manage Airline'?'show active':''"
+             id="ManageAirline">
+            <ng-template [ngIf]="ActiveOperation=='None'">
+                <app-airline-list (activateOperationEvent)="activateOperation($event)"></app-airline-list>
+            </ng-template>
+            <ng-template [ngIf]="ActiveOperation=='AddAirline'">
+                <app-add-airline (activateOperationEvent)="activateOperation($event)"
+                ></app-add-airline>
+            </ng-template>
+        </div>
+        <div class="tab-pane fade"
+        *ngIf="ActiveTab=='Manage Schedule'"
+        [ngClass]="ActiveTab=='Manage Schedule'?'show active':''" 
+            id="ManageSchedule">            
+            <ng-template [ngIf]="ActiveOperation=='None'">
+                <app-flight-inventory 
+                (activateOperationEvent)="activateOperation($event)"></app-flight-inventory>
+            </ng-template>
+            <ng-template [ngIf]="ActiveOperation=='AddFlightInventory'">
+                <app-add-schedule (activateOperationEvent)="activateOperation($event)"></app-add-schedule>
+            </ng-template>
+        </div>
+        <div *ngIf="ActiveTab=='Manage Discount'"
+        class="tab-pane fade" [ngClass]="ActiveTab=='Manage Discount'?'show active':''" 
+            id="ManageDiscount">
+            <ng-template [ngIf]="ActiveOperation=='None'">
+                <app-discount-list 
+                (activateOperationEvent)="activateOperation($event)"></app-discount-list>
+            </ng-template>
+            <ng-template [ngIf]="ActiveOperation=='AddDiscount'">
+                <app-add-discount (activateOperationEvent)="activateOperation($event)"></app-add-discount>
+            </ng-template>
+        </div>
+    </div>
+</div>

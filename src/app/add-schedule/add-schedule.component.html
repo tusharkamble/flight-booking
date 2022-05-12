@@ -1,0 +1,82 @@
+<div class="container" style="max-width: 500px;">
+    <h3 class="mb-3 mt-5 text-center">Add Schedule</h3>
+    <div class="row d-flex">
+        <div class="col-6 form-group p-2">
+            <label for="flightNumber" class="form-label">Flight Number</label>
+            <input id="flightNumber" type="number" [(ngModel)]="objFlightInventory.flightNumber" class="form-control" placeholder="flight Number">
+        </div>
+        <div class="col-6 form-group p-2">
+            <label for="airlineID" class="form-label">Airline</label>
+            <!-- <input id="airlineID" type="number" [(ngModel)]="objFlightInventory.airlineID" class="form-control" placeholder="airline ID"> -->
+            <select id="airlineID" class="form-control" placeholder="airline ID" [(ngModel)]="objFlightInventory.airlineID">
+                <option value="0" disabled>--select--</option>
+                <option *ngFor="let a of lstAirline" [ngValue]="a.id">{{a.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row d-flex">
+        <div class="col-6 form-group p-2">
+            <label for="fromPlace" class="form-label">From Place</label>
+            <input id="fromPlace" type="text" [(ngModel)]="objFlightInventory.fromPlace" class="form-control" placeholder="from Place">
+        </div>
+        <div class="col-6 form-group p-2">
+            <label for="toPlace" class="form-label">To Place</label>
+            <input id="toPlace" type="text" [(ngModel)]="objFlightInventory.toPlace" class="form-control" placeholder="to Place">
+        </div>
+    </div>
+    <div class="row d-flex">
+        <div class="col-6 form-group p-2">
+            <label for="startDateTime" class="form-label">Start Date Time</label>
+            <input id="startDateTime" type="datetime-local" [(ngModel)]="objFlightInventory.startDateTime" class="form-control" placeholder="start Date Time">
+        </div>
+        <div class="col-6 form-group p-2">
+            <label for="endDateTime" class="form-label">End Date Time</label>
+            <input id="endDateTime" type="datetime-local" [(ngModel)]="objFlightInventory.endDateTime" class="form-control" placeholder="end Date Time">
+        </div>
+    </div>
+    <div class="row d-flex">
+        <div class="col-6 form-group p-2">
+            <label for="scheduleDays" class="form-label">Schedule Days</label>
+            <input id="scheduleDays" type="text" [(ngModel)]="objFlightInventory.scheduleDays" class="form-control" placeholder="schedule Days">
+        </div>
+        <div class="col-6 form-group p-2">
+            <label for="instrumentUsed" class="form-label">Instrument Used</label>
+            <input id="instrumentUsed" type="text" [(ngModel)]="objFlightInventory.instrumentUsed" class="form-control" placeholder="instrument Used">
+        </div>
+    </div>
+    <div class="row d-flex">
+        <div class="col-6 form-group p-2">
+            <label for="bussinesSteatsCount" class="form-label">Business Seats Count</label>
+            <input id="bussinesSteatsCount" type="number" [(ngModel)]="objFlightInventory.bussinesSteatsCount" class="form-control" placeholder="business Seats Count">
+        </div>
+        <div class="col-6 form-group p-2">
+            <label for="nonBussinesSeatCount" class="form-label">Non Business Seats Count</label>
+            <input id="nonBussinesSeatCount" type="number" [(ngModel)]="objFlightInventory.nonBussinesSeatCount" class="form-control" placeholder="non Business Seats Count">
+        </div>
+    </div>
+    <div class="row d-flex">
+        <div class="col-6 form-group p-2">
+            <label for="ticketCost" class="form-label">Ticket Cost</label>
+            <input id="ticketCost" type="number" [(ngModel)]="objFlightInventory.ticketCost" class="form-control" placeholder="ticket Cost">
+        </div>
+        <div class="col-6 form-group p-2">
+            <label for="noofRows" class="form-label">No. of Rows</label>
+            <input id="noofRows" type="number" [(ngModel)]="objFlightInventory.noofRows" class="form-control" placeholder="No. of Rows">
+        </div>
+    </div>
+    <div class="row d-flex">
+        <div class="col-6 form-group p-2">
+            <label for="mealType" class="form-label">Meal Type</label>
+            <!-- <input id="mealType" type="text" [(ngModel)]="objFlightInventory.mealType" class="form-control" placeholder="meal Type"> -->
+            <select id="mealType" class="form-control" placeholder="airline ID" [(ngModel)]="objFlightInventory.airlineID">
+                <option value="0" disabled>--select--</option>
+                <option *ngFor="let m of lstMealType" [ngValue]="m">{{m}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-danger btn-lg btn-block" (click)="goBackToMain()" style="margin-left:0px;"><i
+                class="bi bi-arrow-left-circle"></i>Back</button>
+        <button class="btn btn-success btn-lg btn-block m-2" (click)="addSheduleIntoFlightInventory()">Add Schedule</button>
+    </div>
+</div>
